@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="Portfolio - Showcase of projects, skills, and contact" />
+    <title>Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- Loading animation -->
+    <div id="loading-screen" class="loading-screen">
+      <div class="loading-spinner">
+        <div class="spinner-ring"></div>
+        <div class="spinner-text">Loading...</div>
+      </div>
+    </div>
+
+    <header class="site-header" id="top">
+      <div class="container header-inner">
+        <a href="#top" class="brand" aria-label="Home">
+          <span class="brand-mark" aria-hidden="true">◆</span>
+          <span class="brand-text">Adi Affan</span>
+        </a>
+
+        <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+        </button>
+
+        <nav id="site-nav" class="site-nav" aria-label="Primary">
+          <ul class="nav-list">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li>
+              <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">
+                <span class="theme-icon" data-theme-icon>🌙</span>
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="hero">
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <h1>Hi, I'm <span class="accent">Adi Affan</span></h1>
+            <p class="lead">
+              Frontend Developer crafting clean, accessible,<br>
+              and high-performance web experiences.
+            </p>
+            <div class="hero-actions">
+              <a href="#projects" class="btn primary">View Projects</a>
+              <a href="#contact" class="btn secondary">Contact Me</a>
+            </div>
+            <div class="hero-meta">
+              <span class="pill">MCA Student</span>
+              <span class="pill">Available for work</span>
+            </div>
+            
+                         <!-- Interactive stats -->
+             <div class="hero-stats">
+               <div class="stat-item">
+                 <span class="stat-number" data-target="6">0</span>
+                 <span class="stat-label">Projects Completed</span>
+               </div>
+               <div class="stat-item">
+                 <span class="stat-number" data-target="3">0</span>
+                 <span class="stat-label">Years Learning</span>
+               </div>
+               <div class="stat-item">
+                 <span class="stat-number" data-target="100">0</span>
+                 <span class="stat-label">Hours of Practice</span>
+               </div>
+             </div>
+          </div>
+          <div class="hero-media">
+            <div class="portrait-container">
+              <img src="img_2351.jpg" alt="Adi Affan - Frontend Developer" class="portrait-image" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="about" aria-labelledby="about-title">
+        <div class="container">
+          <h2 id="about-title" class="section-title">About</h2>
+          <div class="about-grid">
+            <p>
+              I'm currently pursuing a Master of Computer Applications (MCA) degree, building upon my BCA foundation. I'm passionate about creating user-friendly web experiences and enjoy turning complex problems into simple, beautiful solutions through clean code and intuitive design.
+            </p>
+            <p>
+              During my BCA years, I worked on various academic projects that helped me develop strong fundamentals in web development. I'm actively seeking opportunities to apply my skills and continue learning while pursuing my master's degree.
+            </p>
+          </div>
+          
+          <!-- Interactive timeline -->
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>2025 - Present</h3>
+                <p>MCA Student</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>2022 - 2025</h3>
+                <p>BCA Graduate</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>2020 - 2022</h3>
+                <p>Pre-University</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section muted" id="skills" aria-labelledby="skills-title">
+        <div class="container">
+          <h2 id="skills-title" class="section-title">Skills</h2>
+          <div class="skills-grid" role="list">
+            <div class="skill" role="listitem" data-level="90">
+              <div class="skill-head">
+                <span class="skill-name">HTML</span>
+                <span class="skill-level" aria-hidden="true">90%</span>
+              </div>
+              <div class="skill-bar" aria-label="HTML proficiency 90 percent">
+                <span class="skill-bar-fill"></span>
+              </div>
+            </div>
+            <div class="skill" role="listitem" data-level="85">
+              <div class="skill-head">
+                <span class="skill-name">CSS</span>
+                <span class="skill-level" aria-hidden="true">85%</span>
+              </div>
+              <div class="skill-bar" aria-label="CSS proficiency 85 percent">
+                <span class="skill-bar-fill"></span>
+              </div>
+            </div>
+            <div class="skill" role="listitem" data-level="80">
+              <div class="skill-head">
+                <span class="skill-name">JavaScript</span>
+                <span class="skill-level" aria-hidden="true">80%</span>
+              </div>
+              <div class="skill-bar" aria-label="JavaScript proficiency 80 percent">
+                <span class="skill-bar-fill"></span>
+              </div>
+            </div>
+            <div class="skill" role="listitem" data-level="70">
+              <div class="skill-head">
+                <span class="skill-name">Python</span>
+                <span class="skill-level" aria-hidden="true">70%</span>
+              </div>
+              <div class="skill-bar" aria-label="Python proficiency 70 percent">
+                <span class="skill-bar-fill"></span>
+              </div>
+            </div>
+            <div class="skill" role="listitem" data-level="75">
+              <div class="skill-head">
+                <span class="skill-name">DBMS</span>
+                <span class="skill-level" aria-hidden="true">75%</span>
+              </div>
+              <div class="skill-bar" aria-label="DBMS proficiency 75 percent">
+                <span class="skill-bar-fill"></span>
+              </div>
+            </div>
+            <div class="skill" role="listitem" data-level="88">
+              <div class="skill-head">
+                <span class="skill-name">MS Office</span>
+                <span class="skill-level" aria-hidden="true">88%</span>
+              </div>
+              <div class="skill-bar" aria-label="MS Office proficiency 88 percent">
+                <span class="skill-bar-fill"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="projects" aria-labelledby="projects-title">
+        <div class="container">
+          <h2 id="projects-title" class="section-title">Projects</h2>
+          
+          <!-- Project filters -->
+          <div class="project-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="web">Web</button>
+            <button class="filter-btn" data-filter="mobile">Mobile</button>
+            <button class="filter-btn" data-filter="design">Design</button>
+          </div>
+          
+          <div class="projects-grid">
+            <article class="card project" data-category="web">
+              <div class="card-media ratio-16x9">
+                <img src="assets/img/project-1.jpg" alt="E-commerce website screenshot" loading="lazy" />
+                <div class="card-overlay">
+                  <div class="card-tech">
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">MongoDB</span>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">E-commerce Website</h3>
+                <p class="card-text">Full-featured storefront with product listings, cart, and checkout flow.</p>
+                <div class="card-actions">
+                  <a class="btn tertiary" href="#" target="_blank" rel="noopener">Live</a>
+                  <a class="btn tertiary" href="#" target="_blank" rel="noopener">Code</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="card project" data-category="web">
+              <div class="card-media ratio-16x9">
+                <img src="assets/img/project-2.jpg" alt="Disaster management website screenshot" loading="lazy" />
+                <div class="card-overlay">
+                  <div class="card-tech">
+                    <span class="tech-tag">Vue.js</span>
+                    <span class="tech-tag">Firebase</span>
+                    <span class="tech-tag">Mapbox</span>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Disaster Management Website</h3>
+                <p class="card-text">Information hub with alerts, resources, and location-based assistance tools.</p>
+                <div class="card-actions">
+                  <a class="btn tertiary" href="#" target="_blank" rel="noopener">Live</a>
+                  <a class="btn tertiary" href="#" target="_blank" rel="noopener">Code</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="card project" data-category="web">
+              <div class="card-media ratio-16x9">
+                <img src="assets/img/project-3.jpg" alt="Movie streaming website screenshot" loading="lazy" />
+                <div class="card-overlay">
+                  <div class="tech-tag">Angular</div>
+                  <span class="tech-tag">TypeScript</span>
+                  <span class="tech-tag">TMDB API</span>
+                </div>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Movie Streaming Website</h3>
+                <p class="card-text">Browse, search, and watch trailers with personalized watchlists.</p>
+                <div class="card-actions">
+                  <a class="btn tertiary" href="#" target="_blank" rel="noopener">Live</a>
+                  <a class="btn tertiary" href="#" target="_blank" rel="noopener">Code</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section muted" id="contact" aria-labelledby="contact-title">
+        <div class="container">
+          <h2 id="contact-title" class="section-title">Contact</h2>
+          <form id="contact-form" class="contact-form" novalidate>
+            <div class="form-grid">
+              <label class="form-field">
+                <span>Name</span>
+                <input type="text" name="name" placeholder="Jane Doe" required />
+                <small class="error" aria-live="polite"></small>
+              </label>
+              <label class="form-field">
+                <span>Email</span>
+                <input type="email" name="email" placeholder="jane@email.com" required />
+                <small class="error" aria-live="polite"></small>
+              </label>
+            </div>
+            <label class="form-field">
+              <span>Message</span>
+              <textarea name="message" rows="5" placeholder="How can I help?" required></textarea>
+              <small class="error" aria-live="polite"></small>
+            </label>
+            <div class="form-actions">
+              <button class="btn primary" type="submit">Send Message</button>
+              <p class="form-status" role="status" aria-live="polite"></p>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© <span id="year"></span> Adi Affan</p>
+        <ul class="social" role="list">
+          <li><a href="#" aria-label="GitHub">GitHub</a></li>
+          <li><a href="#" aria-label="LinkedIn">LinkedIn</a></li>
+          <li><a href="adiaffan12@gmail.com" aria-label="Email">Email</a></li>
+        </ul>
+      </div>
+    </footer>
+
+    <!-- Scroll to top button -->
+    <button id="scroll-top" class="scroll-top" aria-label="Scroll to top">
+      <span>↑</span>
+    </button>
+
+    <script src="script.js" defer></script>
+  </body>
+  </html>
+
+
