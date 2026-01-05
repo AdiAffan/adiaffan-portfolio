@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body style="width: 100% !important ;overflow-x: hidden !important;">
     <a class="skip-link" href="#main">Skip to content</a>
 
     <!-- Loading animation -->
@@ -22,33 +22,42 @@
       </div>
     </div>
 
-    <header class="site-header" id="top">
-      <div class="container header-inner">
-        <a href="#top" class="brand" aria-label="Home">
-          <span class="brand-mark" aria-hidden="true">◆</span>
-          <span class="brand-text">Adi Affan</span>
-        </a>
-
-        <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
-          <span class="nav-toggle-bar" aria-hidden="true"></span>
-          <span class="nav-toggle-bar" aria-hidden="true"></span>
-          <span class="nav-toggle-bar" aria-hidden="true"></span>
-        </button>
-
-        <nav id="site-nav" class="site-nav" aria-label="Primary">
-          <ul class="nav-list">
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li>
-              <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">
-                <span class="theme-icon" data-theme-icon>🌙</span>
-              </button>
-            </li>
+    <header class="portfolio-header" id="top">
+      <div class="header-wrapper">
+        <div class="header-logo">
+          <a href="#top" class="logo-link">
+            <span class="logo-icon">AA</span>
+            <span class="logo-text">Adi Affan</span>
+          </a>
+        </div>
+        
+        <nav class="header-nav" aria-label="Main navigation">
+          <ul class="nav-menu">
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
           </ul>
         </nav>
+        
+        <div class="header-actions">
+          <button id="theme-toggle" class="theme-switch" type="button" aria-label="Toggle theme">
+            <span class="theme-icon" data-theme-icon>🌙</span>
+          </button>
+          <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <span class="menu-icon"></span>
+          </button>
+        </div>
       </div>
+      
+      <nav class="mobile-menu" aria-label="Mobile navigation">
+        <ul class="nav-menu">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
     </header>
 
     <main id="main">
@@ -190,6 +199,51 @@
                 <span class="skill-bar-fill"></span>
               </div>
             </div>
+            <div class="skill" role="listitem" data-level="75">
+              <div class="skill-head">
+                <span class="skill-name">React</span>
+                <span class="skill-level" aria-hidden="true">75%</span>
+              </div>
+              <div class="skill-bar" aria-label="React proficiency 75 percent">
+                <span class="skill-bar-fill"></span>
+              </div>
+            </div>
+            <div class="skill" role="listitem" data-level="80">
+              <div class="skill-head">
+                <span class="skill-name">Git & GitHub</span>
+                <span class="skill-level" aria-hidden="true">80%</span>
+              </div>
+              <div class="skill-bar" aria-label="Git and GitHub proficiency 80 percent">
+                <span class="skill-bar-fill"></span>
+              </div>
+            </div>
+            <div class="skill" role="listitem" data-level="78">
+              <div class="skill-head">
+                <span class="skill-name">Responsive Design</span>
+                <span class="skill-level" aria-hidden="true">78%</span>
+              </div>
+              <div class="skill-bar" aria-label="Responsive design proficiency 78 percent">
+                <span class="skill-bar-fill"></span>
+              </div>
+            </div>
+            <div class="skill" role="listitem" data-level="72">
+              <div class="skill-head">
+                <span class="skill-name">SQL</span>
+                <span class="skill-level" aria-hidden="true">72%</span>
+              </div>
+              <div class="skill-bar" aria-label="SQL proficiency 72 percent">
+                <span class="skill-bar-fill"></span>
+              </div>
+            </div>
+            <div class="skill" role="listitem" data-level="85">
+              <div class="skill-head">
+                <span class="skill-name">Problem Solving</span>
+                <span class="skill-level" aria-hidden="true">85%</span>
+              </div>
+              <div class="skill-bar" aria-label="Problem solving proficiency 85 percent">
+                <span class="skill-bar-fill"></span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -209,7 +263,7 @@
           <div class="projects-grid">
             <article class="card project" data-category="web">
               <div class="card-media ratio-16x9">
-                <img src="assets/img/project-1.jpg" alt="E-commerce website screenshot" loading="lazy" />
+                <img src="https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="E-commerce website screenshot" loading="lazy" />
                 <div class="card-overlay">
                   <div class="card-tech">
                     <span class="tech-tag">React</span>
@@ -230,7 +284,7 @@
 
             <article class="card project" data-category="web">
               <div class="card-media ratio-16x9">
-                <img src="assets/img/project-2.jpg" alt="Disaster management website screenshot" loading="lazy" />
+                <img src="https://images.pexels.com/photos/12100467/pexels-photo-12100467.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Disaster management website screenshot" loading="lazy" />
                 <div class="card-overlay">
                   <div class="card-tech">
                     <span class="tech-tag">Vue.js</span>
@@ -251,7 +305,7 @@
 
             <article class="card project" data-category="web">
               <div class="card-media ratio-16x9">
-                <img src="assets/img/project-3.jpg" alt="Movie streaming website screenshot" loading="lazy" />
+                <img src="https://images.pexels.com/photos/7991500/pexels-photo-7991500.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Movie streaming website screenshot" loading="lazy" />
                 <div class="card-overlay">
                   <div class="tech-tag">Angular</div>
                   <span class="tech-tag">TypeScript</span>
