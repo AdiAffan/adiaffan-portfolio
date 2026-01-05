@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://unpkg.com/kursor/dist/kursor.css">
   </head>
   <body style="width: 100% !important ;overflow-x: hidden !important;">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -372,6 +373,17 @@
     </button>
 
     <script src="script.js" defer></script>
+    <script src="https://unpkg.com/kursor"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        new kursor({
+            type: 1,
+
+            removeDefaultCursor: true
+        })
+      })
+        
+    </script>
   </body>
   </html>
 
