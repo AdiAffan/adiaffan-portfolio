@@ -11,6 +11,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="https://unpkg.com/kursor/dist/kursor.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // https://dashboard.emailjs.com/admin/account
+            emailjs.init({
+              publicKey: "KgIhW6WD6niGms0rN",
+            });
+        })();
+    </script>
+    <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                // these IDs from the previous steps
+                emailjs.sendForm('service_5seu95c', 'template_2yaxnsg', this)
+                    .then(() => {
+                        console.log('SUCCESS!');
+                    }, (error) => {
+                        console.log('FAILED...', error);
+                    });
+            });
+        }
+    </script>
   </head>
   <body style="width: 100% !important ;overflow-x: hidden !important;">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -330,7 +353,7 @@
         <div class="container">
           <h2 id="contact-title" class="section-title">Contact</h2>
           <form id="contact-form" class="contact-form" novalidate>
-            <div class="form-grid">
+            <div class="form-grid"> 
               <label class="form-field">
                 <span>Name</span>
                 <input type="text" name="name" placeholder="Jane Doe" required />
