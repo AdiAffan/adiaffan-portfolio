@@ -420,37 +420,40 @@
         themeIcon.style.transform = 'rotate(360deg)';
         themeIcon.textContent = '🌞';
       }
-      // Update cursor to bold black for light theme
-      updateCursorColor('black');
+      // Update cursor to light-grey for light theme
+      updateCursorColor('light');
     } else {
       root.removeAttribute('data-theme');
       if (themeIcon) {
         themeIcon.style.transform = 'rotate(0deg)';
         themeIcon.textContent = '🌙';
       }
-      // Update cursor to bold white for dark theme
-      updateCursorColor('white');
+      // Update cursor to off-white for dark theme
+      updateCursorColor('dark');
     }
   }
 
   // Function to update cursor color dynamically
-  function updateCursorColor(color) {
-    // Update our custom cursor elements explicitly using black/white values
+  function updateCursorColor(mode) {
+    // mode: 'light' or 'dark' (also backward-compatible accepts '#...' values)
     const ring = document.querySelector('.custom-cursor-ring');
     const dot = document.querySelector('.custom-cursor-dot');
-    // Normalize color to exact black/white
-    const ringColor = (color === 'black' || color === '#000' || color === '#000000') ? '#000' : '#fff';
-    const dotColor = ringColor;
+    // Define desired colors
+    const LIGHT_RING = '#616263ff'; // light grey for light theme
+    const DARK_RING = '#d6e4eaff'; // off-white for dark theme
+
+    let ringColor = null;
+    if (mode === 'light') ringColor = LIGHT_RING;
+    else if (mode === 'dark') ringColor = DARK_RING;
+    else ringColor = mode; // allow passing explicit color strings
+
     if (!ring || !dot) {
-      // ensure they exist
       createCursorRing();
     }
-    if (ring) {
-      ring.style.borderColor = ringColor;
-    }
-    if (dot) {
-      dot.style.backgroundColor = dotColor;
-    }
+    const r = document.querySelector('.custom-cursor-ring');
+    const d = document.querySelector('.custom-cursor-dot');
+    if (r) r.style.borderColor = ringColor;
+    if (d) d.style.backgroundColor = ringColor;
   }
 
   // Create the small filled dot that follows the cursor
@@ -507,6 +510,8 @@
     return dot;
   }
 
+  
+
   const savedTheme = localStorage.getItem(THEME_KEY);
   if (savedTheme) {
     applyTheme(savedTheme);
@@ -522,21 +527,14 @@
   function syncCursorToTheme() {
     const applyNow = () => {
       const isLight = root.getAttribute('data-theme') === 'light';
-      const color = isLight ? 'black' : 'white';
+      const mode = isLight ? 'light' : 'dark';
 
       // Ensure our custom cursor exists
       if (!document.querySelector('.custom-cursor-dot')) createCursorRing();
 
-      const ring = document.querySelector('.custom-cursor-ring');
-      const dot = document.querySelector('.custom-cursor-dot');
-      if (ring) {
-        ring.style.borderColor = color;
-      }
-      if (dot) {
-        dot.style.backgroundColor = color;
-      }
+      updateCursorColor(mode);
 
-      return !!ring && !!dot;
+      return !!document.querySelector('.custom-cursor-ring') && !!document.querySelector('.custom-cursor-dot');
     };
 
     if (applyNow()) return;
@@ -568,6 +566,7 @@
     // Ensure our custom cursor exists and matches the current theme immediately
     try { createCursorRing(); } catch (e) { /* ignore if DOM not ready */ }
     try { syncCursorToTheme(); } catch (e) { /* ignore */ }
+    try { initCursorHover(); } catch (e) { /* ignore */ }
     initHeaderScroll();
     initTypingEffect();
     initSkillBars();
