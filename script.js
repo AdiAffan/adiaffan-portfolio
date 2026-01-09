@@ -413,12 +413,17 @@
 
   // Theme toggle with enhanced animations
   const THEME_KEY = 'portfolio-theme';
+  const logoImg = document.getElementById('logo-img');
+  
   function applyTheme(theme) {
     if (theme === 'light') {
       root.setAttribute('data-theme', 'light');
       if (themeIcon) {
         themeIcon.style.transform = 'rotate(360deg)';
         themeIcon.textContent = '🌞';
+      }
+      if (logoImg) {
+        logoImg.src = '/img/light-logo.png';
       }
       // Update cursor to light-grey for light theme
       updateCursorColor('light');
@@ -427,6 +432,9 @@
       if (themeIcon) {
         themeIcon.style.transform = 'rotate(0deg)';
         themeIcon.textContent = '🌙';
+      }
+      if (logoImg) {
+        logoImg.src = '/img/dark-logo.png';
       }
       // Update cursor to off-white for dark theme
       updateCursorColor('dark');
