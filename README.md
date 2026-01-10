@@ -1,3 +1,5 @@
+# [Portfolio Template](https://adiaffan-portfolio.vercel.app)
+
 # Portfolio Template
 
 A fully responsive, accessible portfolio built with HTML, CSS, and vanilla JS. Includes a mobile menu, smooth scrolling, dark mode, and basic contact form validation.
@@ -25,5 +27,6 @@ A fully responsive, accessible portfolio built with HTML, CSS, and vanilla JS. I
 ## Deploy
 
 Host statically anywhere (GitHub Pages, Netlify, Vercel). No build step required.
+
 
 
