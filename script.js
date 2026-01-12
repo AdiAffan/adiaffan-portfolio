@@ -24,7 +24,12 @@
         loadingScreen.classList.add('hidden');
         setTimeout(() => {
           loadingScreen.style.display = 'none';
-        }, 500);
+          // Trigger hero animation after loading screen is hidden
+          const heroInner = document.querySelector('.hero-inner');
+          if (heroInner) {
+            heroInner.classList.add('animate');
+          }
+        }, 200); // Reduced to match the faster transition
       }, 1500);
     }
   }
@@ -34,20 +39,29 @@
     const counters = document.querySelectorAll('.stat-number');
     counters.forEach(counter => {
       const target = parseInt(counter.getAttribute('data-target'));
-      const increment = target / 50;
-      let current = 0;
+      const suffix = counter.getAttribute('data-suffix') || '';
+      const duration = 2000; // 2 seconds
+      const startTime = performance.now();
+      const startValue = 0;
       
-      const updateCounter = () => {
-        if (current < target) {
-          current += increment;
-          counter.textContent = Math.ceil(current);
+      const updateCounter = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Easing function for smooth animation
+        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+        const current = Math.floor(startValue + (target - startValue) * easeOutQuart);
+        
+        counter.textContent = current + suffix;
+        
+        if (progress < 1) {
           requestAnimationFrame(updateCounter);
         } else {
-          counter.textContent = target;
+          counter.textContent = target + suffix;
         }
       };
       
-      updateCounter();
+      requestAnimationFrame(updateCounter);
     });
   }
 
@@ -141,68 +155,7 @@
       const actions = card.querySelector('.card-actions');
       
       if (media && actions) {
-        // Hover effects
-        card.addEventListener('mouseenter', () => {
-          card.style.transform = 'translateY(-8px)';
-          card.style.boxShadow = '0 20px 40px rgba(0,0,0,0.3)';
-          media.style.transform = 'scale(1.05)';
-          actions.style.opacity = '1';
-          actions.style.transform = 'translateY(0)';
-        });
-        
-        card.addEventListener('mouseleave', () => {
-          card.style.transform = 'translateY(0)';
-          card.style.boxShadow = '';
-          media.style.transform = 'scale(1)';
-          actions.style.opacity = '0.8';
-          actions.style.transform = 'translateY(10px)';
-        });
-        
-        // Click effect
-        card.addEventListener('click', (e) => {
-          if (!e.target.closest('a')) {
-            card.style.transform = 'scale(0.98)';
-            setTimeout(() => {
-              card.style.transform = '';
-            }, 150);
-          }
-        });
-      }
-    });
-  }
-
-  // Project filtering
-  function initProjectFiltering() {
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const filter = btn.getAttribute('data-filter');
-        
-        // Update active button
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        
-        // Filter projects
-        projectCards.forEach(card => {
-          const category = card.getAttribute('data-category');
-          if (filter === 'all' || category === filter) {
-            card.style.display = 'block';
-            card.style.animation = 'fadeInUp 0.6s ease forwards';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      });
-    });
-  }
-
-  // Scroll to top functionality
-  function initScrollToTop() {
-    if (!scrollTopBtn) return;
-    
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 300) {
-        scrollTopBtn.classList.add('visible');
-      } else {
+        // Hero animations removed — function intentionally left out.
         scrollTopBtn.classList.remove('visible');
       }
     });
@@ -360,6 +313,29 @@
         }, 1500);
       });
     }
+  }
+
+  // Hero slide-in/out observer
+  function initHeroAnimations() {
+    const hero = document.getElementById('hero');
+    if (!hero) return;
+
+    // Ensure initial state before intersection
+    hero.classList.remove('hero--visible', 'hero--hidden');
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          hero.classList.add('hero--visible');
+          hero.classList.remove('hero--hidden');
+        } else {
+          hero.classList.add('hero--hidden');
+          hero.classList.remove('hero--visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    io.observe(hero);
   }
 
   // Parallax effect for hero section
@@ -589,8 +565,8 @@
     // Animate counters after skills are visible
     setTimeout(animateCounters, 2000);
     
-    // Animate hero counters after typing effect
-    setTimeout(animateHeroCounters, 2500);
+    // Animate hero counters after hero section appears (loading screen hides at ~1700ms, hero animates for 900ms, so start at ~2600ms)
+    setTimeout(animateHeroCounters, 2600);
   }
 
   // Start initialization when DOM is ready

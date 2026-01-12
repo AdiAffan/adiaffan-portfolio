@@ -96,7 +96,7 @@
             </p>
             <div class="hero-actions">
               <a href="#projects" class="btn primary">View Projects</a>
-              <a href="#contact" class="btn secondary">Contact Me</a>
+              <a href="resume.pdf" class="btn primary btn-download" download>Download Resume</a>
             </div>
             <div class="hero-meta">
               <span class="pill">MCA Student</span>
@@ -104,17 +104,19 @@
             </div>
             
              
+           
+
              <div class="hero-stats">
                <div class="stat-item">
-                 <span class="stat-number" data-target="6">0</span>
+                 <span class="stat-number" data-target="6" data-suffix="">6</span>
                  <span class="stat-label">Projects Completed</span>
                </div>
                <div class="stat-item">
-                 <span class="stat-number" data-target="3">0</span>
+                 <span class="stat-number" data-target="3" data-suffix="">3</span>
                  <span class="stat-label">Years Learning</span>
                </div>
                <div class="stat-item">
-                 <span class="stat-number" data-target="100">0</span>
+                 <span class="stat-number" data-target="100" data-suffix="+">100+</span>
                  <span class="stat-label">Hours of Practice</span>
                </div>
              </div>
@@ -126,74 +128,26 @@
           </div>
         </div>
       </section>
-
-      <section class="section" id="resume" aria-labelledby="resume-title">
-        <div class="container">
-          <h2 id="resume-title" class="section-title">Resume</h2>
-          <div class="resume-grid">
-            <div class="resume-main">
-              <p class="resume-summary">Frontend developer and MCA student focused on building accessible, performant web interfaces. Experienced with modern HTML, CSS, JavaScript and frameworks like React. Looking for opportunities to contribute to meaningful projects.</p>
-
-              <div class="resume-block">
-                <h3>Experience</h3>
-                <div class="resume-item">
-                  <h4>Freelance Frontend Developer</h4>
-                  <span class="meta">2023 — Present</span>
-                  <p>Designed and implemented responsive websites, collaborated with clients to deliver accessible UI, and optimized performance for faster load times.</p>
-                </div>
-                <div class="resume-item">
-                  <h4>Academic Projects</h4>
-                  <span class="meta">2021 — 2023</span>
-                  <p>Built several web apps during BCA including an e-commerce demo, a movie-streaming prototype, and a disaster management portal.</p>
-                </div>
-              </div>
-
-              <div class="resume-block">
-                <h3>Education</h3>
-                <div class="resume-item">
-                  <h4>MCA (Master of Computer Applications)</h4>
-                  <span class="meta">2025 — Present</span>
-                  <p>Currently pursuing advanced studies in computer applications.</p>
-                </div>
-                <div class="resume-item">
-                  <h4>BCA (Bachelor of Computer Applications)</h4>
-                  <span class="meta">2022 — 2025</span>
-                  <p>Completed undergraduate degree with a focus on web development fundamentals.</p>
-                </div>
-              </div>
-            </div>
-
-            <aside class="resume-aside">
-              <div class="resume-block">
-                <h4>Skills</h4>
-                <ul class="skill-list">
-                  <li>HTML, CSS, Responsive Design</li>
-                  <li>JavaScript, React</li>
-                  <li>Git, GitHub</li>
-                  <li>SQL, DBMS</li>
-                  <li>Problem Solving & Accessibility</li>
-                </ul>
-              </div>
-
-              <a href="/resume.pdf" class="btn primary btn-download" download>Download Resume</a>
-            </aside>
-          </div>
-        </div>
-      </section>
-
+      
       <section class="section" id="about" aria-labelledby="about-title">
         <div class="container">
           <h2 id="about-title" class="section-title">About</h2>
           <div class="about-grid">
             <p>
-              I'm currently pursuing a Master of Computer Applications (MCA) degree, building upon my BCA foundation. I'm passionate about creating user-friendly web experiences and enjoy turning complex problems into simple, beautiful solutions through clean code and intuitive design.
+              I'm currently pursuing a Master of Computer Applications (MCA) degree, building on my BCA foundation. I focus on crafting user-friendly, accessible web experiences and enjoy turning complex problems into simple, beautiful solutions with clean, maintainable code.
             </p>
             <p>
-              During my BCA years, I worked on various academic projects that helped me develop strong fundamentals in web development. I'm actively seeking opportunities to apply my skills and continue learning while pursuing my master's degree.
+              My day-to-day work and study cover modern front-end technologies — semantic HTML and responsive CSS, performant JavaScript, and component-driven development with React. I also use tooling and workflows like Git and GitHub, and I apply SQL and DBMS concepts when building data-driven features.
             </p>
-          </div>
-          
+            <p>
+              I value accessibility, responsive design, and pragmatic problem solving. Whether building prototypes or polishing production UI, I aim for fast, inclusive interfaces that scale across devices. For a concise overview of my experience and projects, see my resume below.
+            </p>
+
+            <!-- Download resume button for quick access -->
+           
+
           <!-- Interactive timeline -->
+          <div class="timeline">
           <div class="timeline">
             <div class="timeline-item">
               <div class="timeline-marker"></div>
@@ -438,9 +392,9 @@
       <div class="container footer-inner">
         <p>© <span id="year"></span> Adi Affan</p>
         <ul class="social" role="list">
-          <li><a href="#" aria-label="GitHub">GitHub</a></li>
+          <li><a href="https://github.com/AdiAffan" aria-label="GitHub">GitHub</a></li>
           <li><a href="#" aria-label="LinkedIn">LinkedIn</a></li>
-          <li><a href="adiaffan12@gmail.com" aria-label="Email">Email</a></li>
+          <li><a href="mailto:adiaffan12@gmail.com" aria-label="Email">Email</a></li>
         </ul>
       </div>
     </footer>
@@ -454,16 +408,20 @@
     <script src="https://unpkg.com/kursor"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-        new kursor({
-            type: 5,
-
-            removeDefaultCursor: true
-        })
-      })
+        // Only initialize kursor on non-mobile devices
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.matchMedia('(max-width: 768px) and (hover: none)').matches;
         
+        if (!isMobile) {
+          new kursor({
+              type: 5,
+
+              removeDefaultCursor: true
+          })
+        }
+      })
+      
     </script>
   </body>
   </html>
-
 
 
