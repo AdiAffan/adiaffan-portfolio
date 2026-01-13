@@ -14,6 +14,10 @@
   const filterBtns = document.querySelectorAll('.filter-btn');
   const header = document.querySelector('.portfolio-header');
 
+  function isMobile() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || (window.matchMedia && window.matchMedia('(max-width: 899px)').matches);
+  }
+
   // Year in footer
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
@@ -419,6 +423,8 @@
 
   // Function to update cursor color dynamically
   function updateCursorColor(mode) {
+    if (isMobile()) return;
+
     // mode: 'light' or 'dark' (also backward-compatible accepts '#...' values)
     const ring = document.querySelector('.custom-cursor-ring');
     const dot = document.querySelector('.custom-cursor-dot');
@@ -442,6 +448,8 @@
 
   // Create the small filled dot that follows the cursor
   function createCursorRing() {
+    if (isMobile()) return;
+
     // Backwards-compatible name kept for other parts of the script
     if (document.querySelector('.custom-cursor-dot')) return document.querySelector('.custom-cursor-dot');
     // Create ring (outline) and dot (filled) elements
@@ -509,6 +517,8 @@
   // Ensure the kursor element matches current theme when it appears.
   // If the cursor already exists, apply immediately; otherwise observe DOM additions.
   function syncCursorToTheme() {
+    if (isMobile()) return;
+
     const applyNow = () => {
       const isLight = root.getAttribute('data-theme') === 'light';
       const mode = isLight ? 'light' : 'dark';
@@ -578,4 +588,3 @@
 })();
 
 document.dispatchEvent(new Event('themechange'));
-

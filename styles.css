@@ -94,8 +94,10 @@ body {
 }
 
 /* Custom cursor defaults so the designed cursor appears immediately on load */
-body {
-  cursor: none;
+@media (min-width: 900px) {
+  body {
+    cursor: none;
+  }
 }
 
 /* Hide the external kursor library elements to avoid conflicts; we'll use our own custom cursor */
