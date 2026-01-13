@@ -405,8 +405,6 @@
       if (logoImg) {
         logoImg.src = '/img/light-logo.png';
       }
-      // Update cursor to light-grey for light theme
-      updateCursorColor('light');
     } else {
       root.removeAttribute('data-theme');
       if (themeIcon) {
@@ -416,90 +414,7 @@
       if (logoImg) {
         logoImg.src = '/img/dark-logo.png';
       }
-      // Update cursor to off-white for dark theme
-      updateCursorColor('dark');
     }
-  }
-
-  // Function to update cursor color dynamically
-  function updateCursorColor(mode) {
-    if (isMobile()) return;
-
-    // mode: 'light' or 'dark' (also backward-compatible accepts '#...' values)
-    const ring = document.querySelector('.custom-cursor-ring');
-    const dot = document.querySelector('.custom-cursor-dot');
-    // Define desired colors
-    const LIGHT_RING = '#616263ff'; // light grey for light theme
-    const DARK_RING = '#d6e4eaff'; // off-white for dark theme
-
-    let ringColor = null;
-    if (mode === 'light') ringColor = LIGHT_RING;
-    else if (mode === 'dark') ringColor = DARK_RING;
-    else ringColor = mode; // allow passing explicit color strings
-
-    if (!ring || !dot) {
-      createCursorRing();
-    }
-    const r = document.querySelector('.custom-cursor-ring');
-    const d = document.querySelector('.custom-cursor-dot');
-    if (r) r.style.borderColor = ringColor;
-    if (d) d.style.backgroundColor = ringColor;
-  }
-
-  // Create the small filled dot that follows the cursor
-  function createCursorRing() {
-    if (isMobile()) return;
-
-    // Backwards-compatible name kept for other parts of the script
-    if (document.querySelector('.custom-cursor-dot')) return document.querySelector('.custom-cursor-dot');
-    // Create ring (outline) and dot (filled) elements
-    const ring = document.createElement('div');
-    ring.className = 'custom-cursor-ring';
-    const dot = document.createElement('div');
-    dot.className = 'custom-cursor-dot';
-
-    // Initial center position but hidden until first mousemove
-    Object.assign(ring.style, { left: '50%', top: '50%', opacity: '0' });
-    Object.assign(dot.style, { left: '50%', top: '50%', opacity: '0' });
-
-    document.body.appendChild(ring);
-    document.body.appendChild(dot);
-
-    // Variables for smooth follow (outer ring will ease towards target)
-    let targetX = window.innerWidth / 2;
-    let targetY = window.innerHeight / 2;
-    let ringX = targetX;
-    let ringY = targetY;
-    const ease = 0.17; // smaller = slower follow
-
-    // Reveal on first movement
-    let firstMove = true;
-    window.addEventListener('mousemove', (e) => {
-      targetX = e.clientX;
-      targetY = e.clientY;
-
-      // Dot snaps directly to pointer
-      dot.style.left = targetX + 'px';
-      dot.style.top = targetY + 'px';
-
-      if (firstMove) {
-        ring.style.opacity = '1';
-        dot.style.opacity = '1';
-        firstMove = false;
-      }
-    }, { passive: true });
-
-    // Animation loop to lerp the ring towards the target (follows the dot)
-    function animateRing() {
-      ringX += (targetX - ringX) * ease;
-      ringY += (targetY - ringY) * ease;
-      ring.style.left = ringX + 'px';
-      ring.style.top = ringY + 'px';
-      requestAnimationFrame(animateRing);
-    }
-    requestAnimationFrame(animateRing);
-
-    return dot;
   }
 
   
@@ -507,36 +422,9 @@
   const savedTheme = localStorage.getItem(THEME_KEY);
   if (savedTheme) {
     applyTheme(savedTheme);
-    syncCursorToTheme();
   } else {
     const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
     applyTheme(prefersLight ? 'light' : 'dark');
-    syncCursorToTheme();
-  }
-
-  // Ensure the kursor element matches current theme when it appears.
-  // If the cursor already exists, apply immediately; otherwise observe DOM additions.
-  function syncCursorToTheme() {
-    if (isMobile()) return;
-
-    const applyNow = () => {
-      const isLight = root.getAttribute('data-theme') === 'light';
-      const mode = isLight ? 'light' : 'dark';
-
-      // Ensure our custom cursor exists
-      if (!document.querySelector('.custom-cursor-dot')) createCursorRing();
-
-      updateCursorColor(mode);
-
-      return !!document.querySelector('.custom-cursor-ring') && !!document.querySelector('.custom-cursor-dot');
-    };
-
-    if (applyNow()) return;
-
-    const observer = new MutationObserver((records, obs) => {
-      if (applyNow()) obs.disconnect();
-    });
-    observer.observe(document.documentElement || document.body, { childList: true, subtree: true });
   }
 
   if (themeToggle) {
@@ -557,10 +445,6 @@
   // Initialize all interactive features
   function init() {
     hideLoadingScreen();
-    // Ensure our custom cursor exists and matches the current theme immediately
-    try { createCursorRing(); } catch (e) { /* ignore if DOM not ready */ }
-    try { syncCursorToTheme(); } catch (e) { /* ignore */ }
-    try { initCursorHover(); } catch (e) { /* ignore */ }
     initHeaderScroll();
     initTypingEffect();
     initSkillBars();
